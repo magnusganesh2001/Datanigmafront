@@ -1,0 +1,7 @@
+mat-spinner{
+    margin-left: 45%; 
+    margin-top: 15%;   
+}
+.spin ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #0f88aad0;
+}

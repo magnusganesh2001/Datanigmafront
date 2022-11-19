@@ -1,0 +1,57 @@
+<div class="postform formcontent">
+  <form class="example-form" [formGroup]="jobPostForm" (submit)="createJob()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Job Title</mat-label>
+      <input required type="text" matInput formControlName="jobTitle"/>
+    </mat-form-field>
+    <!-- salary -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Salary LPA</mat-label>
+      <input required type="text" matInput formControlName="salary" placeholder="LPA in Rs"/>
+    </mat-form-field>
+    <!-- location -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Location</mat-label>
+      <input required type="text" matInput formControlName="location"/>
+    </mat-form-field>
+    <!-- jobtype     -->
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Job Type</mat-label>
+      <mat-select required formControlName="jobType">
+        <mat-option value="Full Time">Full time</mat-option>
+        <mat-option value="Part Time">Part time</mat-option>
+        <mat-option value="Temporary">Temporary</mat-option>
+        <mat-option value="Internship">Intern</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- skills -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Skills</mat-label>
+      <input required type="text" matInput placeholder="Skills seperated by ," formControlName="skills"/>
+    </mat-form-field>
+    <!-- languages -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Languages</mat-label>
+      <input required type="text" matInput placeholder="Languages seperated by ," formControlName="languages"/>
+    </mat-form-field>
+    <!-- benefits -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Benefits</mat-label>
+      <input required type="text" matInput placeholder="Benefits seperated by ," formControlName="benefits"/>
+    </mat-form-field>
+    <!-- discription -->
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Job Description</mat-label>
+      <textarea matInput required type="text" formControlName="jobDescription"></textarea>
+    </mat-form-field>
+    <!-- urgent -->
+    <label class="thick" class="example-full-width">Immediate Joining :
+    <mat-radio-group aria-label="Select an option" formControlName="urgent">
+      <mat-radio-button value="true">Yes</mat-radio-button>
+      <mat-radio-button value="false">No</mat-radio-button>
+    </mat-radio-group>
+    </label>
+    
+    <button mat-raised-button type="submit" class="btncontent">Post</button>
+  </form>
+</div>

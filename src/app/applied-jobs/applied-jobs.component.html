@@ -1,0 +1,35 @@
+<div class="container">
+  <mat-card class="full-screen">
+    <mat-card-title-group>
+      <mat-card-title>Applied Jobs</mat-card-title>
+      <mat-card-subtitle
+        >We bring all the opportunities around the world to your
+        fingertips!</mat-card-subtitle
+      >
+    </mat-card-title-group>
+    <mat-card-content>
+      <h1>Jobs</h1>
+      <div>
+        <div *ngFor="let job of jobs">
+          <div *ngIf="job.candidates.includes(userId)">
+            <div class="card hovereffect inlinescss">
+              <div class="card-body">
+                <h2 class="card-title">Title : {{ job.title }}</h2>
+                <h3 class="card-subtitle text-muted">
+                  Company : {{ job.company }}
+                </h3>
+                <h3 class="card-subtitle">Location : {{ job.location }}</h3>
+                <h4 class="card-subtitle">Salary in LPA : {{ job.salary }}</h4>
+                <p class="card-text">Discription : {{ job.description }}</p>
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer class="text-center">
+      2022 Copyright reserved.
+    </mat-card-footer>
+  </mat-card>
+</div>

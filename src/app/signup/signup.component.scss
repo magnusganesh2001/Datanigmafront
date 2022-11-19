@@ -1,0 +1,18 @@
+.card{
+    border: none;
+    border-style: outset;
+    width: 500px;
+    padding: 40px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    background: linear-gradient(90deg, white 0%, white 100%);
+}
+.card h1, h6{
+    color: black;
+}
+label{
+    color: black;
+}

@@ -1,0 +1,9 @@
+<app-header style="height: 20vh;"></app-header>
+<div style="height: 80vh;" *ngIf="showspinner == false">
+  <router-outlet>
+  </router-outlet>
+</div>
+<div class="spin">
+<mat-spinner *ngIf="showspinner == true"></mat-spinner>
+</div>
+<app-footer></app-footer>

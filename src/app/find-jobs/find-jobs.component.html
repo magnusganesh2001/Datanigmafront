@@ -1,0 +1,90 @@
+<div class="container sticky-top" style="height: 80vh;">
+  <mat-card class="backimgstyle">
+    <mat-card-title-group >
+      <mat-card-title>Find Jobs</mat-card-title>
+      <mat-card-subtitle>We bring all the opportunities around the world to your
+        fingertips!</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <div class="row">
+        <input class="form-control search" type="text" (keyup)="applyFilter()" [(ngModel)]="searchText" autocomplete="off"
+          placeholder="Search by job title, position, location ..." />
+      </div>
+    </mat-card-content>
+    <mat-card-content>
+      <div class="row" style="height: 70vh;">
+        <div class="col p-2 pb-3 pt-3 scrollbar scrollbar-dirty-cyan bordered-dirty-cyan invisible-scrollbar"
+        style="height: 100%; overflow-y: auto">
+        <div *ngIf="dataSource"><div *ngIf="dataSource.filteredData.length < 1">No jobs found...</div></div>
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="job">
+              <th mat-header-cell *matHeaderCellDef> Jobs </th>
+              <td mat-cell *matCellDef="let job">
+                <div class="card hovereffect" style="width: 90%; margin: auto; cursor: pointer; scroll-behavior: none"
+                  (click)="openJob(job)">
+                  <div class="card-body">
+                    <h2 class="card-title">{{ job.title }}</h2>
+                    <h3 class="card-subtitle text-muted">{{ job.company }}</h3>
+                    <h3 class="card-subtitle">{{ job.location }}</h3>
+                    <div>
+                      <h5 class="card-text">{{ job.salary }}</h5>
+                    </div>
+                    <p class="card-text">{{ job.description }}</p>
+                  </div>
+                </div>
+                <br />
+              </td>
+            </ng-container>
+            <div *ngFor="let job"></div>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <div class="col scrollbar scrollbar-dirty-cyan bordered-dirty-cyan thin"
+          style="height: 100%; overflow-y: auto;">
+          <div class="col">
+            <div class="col p-3 pl-2" *ngIf="jobInDisplay">
+              <h1>{{ jobInDisplay.company }}</h1>
+              <h2 *ngIf="jobInDisplay.urgent">Urgent</h2>
+              <h2 *ngIf="jobInDisplay.jobType">{{ jobInDisplay.jobType }}</h2>
+              <h2>{{ jobInDisplay.title }}</h2>
+              <h3>{{ jobInDisplay.location }}</h3>
+              <h3>{{ jobInDisplay.salary }}</h3>
+              <h3 class="text-justify">{{ jobInDisplay.description }}</h3>
+              <div *ngIf="jobInDisplay.skills.length > 0">
+                <h2>Skills</h2>
+                <ul>
+                  <li *ngFor="let skill of jobInDisplay.skills">{{ skill }}</li>
+                </ul>
+              </div>
+              <div *ngIf="jobInDisplay.languages.length > 0">
+                <h2>Languages Known</h2>
+                <ul>
+                  <li *ngFor="let language of jobInDisplay.languages">{{ language }}</li>
+                </ul>
+              </div>
+              <div *ngIf="jobInDisplay.benefits.length > 0">
+                <h2>Benefits</h2>
+                <ul>
+                  <li *ngFor="let benefit of jobInDisplay.benefits">{{ benefit }}</li>
+                </ul>
+              </div>
+              <button mat-raised-button (click)="applyJob(jobInDisplay._id)" [disabled]="jobInDisplay.applied">
+                <span *ngIf="jobInDisplay.applied">Applied</span>
+                <span *ngIf="!jobInDisplay.applied">Apply</span>
+              </button>
+            </div>
+            <div *ngIf="!jobInDisplay" class="col pt-3">Select a job to view details...</div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons aria-label="Select page of jobs">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+  <footer class="text-center">
+    2022 Copyright reserved.
+  </footer>
+</div>
