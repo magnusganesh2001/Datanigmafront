@@ -20,6 +20,7 @@ export class FindJobsComponent {
   userId: string;
   searchText: string = '';
   jobInDisplay: JobList | undefined;
+  companyUrl = this.authService.getTokenData().companyUrl;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

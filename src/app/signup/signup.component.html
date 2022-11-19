@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="text-center">
                     <h1>Sign Up</h1>
-                    <h6>Register Yourself</h6>
+                    <h4>Register Yourself</h4>
                 </div>
                 <button mat-raised-button (click)="setSignup('Employer')" [color]="userType ==='Employer' ? 'primary' : ''">Employer</button><br>
                 <button mat-raised-button (click)="setSignup('Seeker')" [color]="userType ==='Seeker' ? 'primary' : ''">Seeker</button><br>
@@ -17,6 +17,10 @@
                         <div class="mb-3" *ngIf="userType === 'Employer'">
                           <label for="userCompany" class="form-label">Company</label>
                           <input formControlName="userCompany" type="text" class="form-control" id="userCompany">
+                        </div>
+                        <div class="mb-3" *ngIf="userType === 'Employer'">
+                            <label for="companyUrl" class="form-label">Company URL</label>
+                            <input formControlName="companyUrl" type="text" class="form-control" id="companyUrl">
                         </div>
                         <div class="mb-3">
                             <label for="userPhone" class="form-label">Phone Number</label>
