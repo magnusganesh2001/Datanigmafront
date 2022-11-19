@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   loggedIn: boolean;
   url: string;
   candidateName!: string;
+  candidateId!: string;
 
   constructor(private router:Router, private authService: AuthService, public dialog: MatDialog, private jobService: JobService){
     this.loggedIn = authService.isAuthenticated();
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.loggedIn){
       this.userType = this.authService.getTokenData().type;
       this.candidateName = this.authService.getTokenData().name;
+      this.candidateId = this.authService.getTokenData().id;
     }
   }
   
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       if (this.loggedIn){
         this.userType = this.authService.getTokenData().type;
         this.candidateName = this.authService.getTokenData().name;
+        this.candidateId = this.authService.getTokenData().id;
       }
       else
         this.userType = '';

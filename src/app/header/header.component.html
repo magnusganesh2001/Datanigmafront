@@ -3,7 +3,7 @@
     <img src="./.././../assets/logo1.png" width="130" alt="" class="d-inline-block align-middle mr-2">
   </span>
     <div class="spacer"></div>
-    <button  class="NavButton" *ngIf="loggedIn" mat-raised-button routerLink="/candidate-profile">Hi, {{candidateName}}!</button>
+    <button  class="NavButton" *ngIf="loggedIn" mat-raised-button routerLink="/candidate-profile/{{candidateId}}">Hi, {{candidateName}}!</button>
     <button  mat-flat-button *ngIf="userType == 'Seeker' && loggedIn" routerLink="/applied-jobs" routerLinkActive="router-link-active" class="headerbutton NavButton">
       <span>Applied Jobs</span>
     </button>

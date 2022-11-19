@@ -80,5 +80,11 @@ export class AuthService {
       }
     });
   }
-
+  
+  getCandidateProfile(userid: string) {
+    return this.axiosClient.request({
+      method: 'get',
+      url: 'candidate/'+userid
+    });
+  }
 }

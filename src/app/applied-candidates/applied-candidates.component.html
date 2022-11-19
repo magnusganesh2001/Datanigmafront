@@ -14,7 +14,7 @@
           <!-- Candidate Name Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            <td mat-cell *matCellDef="let element"><b style="cursor:pointer" routerLink="/candidate-profile/{{element.id}}">{{element.name}}</b></td>
           </ng-container>
           <!-- Candidate Mobile Column -->
           <ng-container matColumnDef="phone">
