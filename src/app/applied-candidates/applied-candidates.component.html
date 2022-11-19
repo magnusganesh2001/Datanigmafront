@@ -2,40 +2,45 @@
     <mat-card class="full-screen">
       <mat-card-title-group>
         <mat-card-title>Applied Candidates</mat-card-title>
-        <mat-card-subtitle
-          >We bring all the opportunities around the world to your
-          fingertips!</mat-card-subtitle
-        >
+        <mat-card-subtitle>We bring all the opportunities around the world to your fingertips!</mat-card-subtitle>
       </mat-card-title-group>
-      <mat-card-content>
+      <mat-card-content *ngIf="dataSource.length > 0">
         <table mat-table class="full-width" [dataSource]="dataSource">
           <!-- S.NO Column -->
           <ng-container matColumnDef="no">
             <th mat-header-cell *matHeaderCellDef>No.</th>
             <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
           </ng-container>
-          <!-- Job Title Column -->
-          <ng-container matColumnDef="title">
+          <!-- Candidate Name Column -->
+          <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let element">{{element.name}}</td>
           </ng-container>
-          <!-- Company Column -->
-          <ng-container matColumnDef="company">
+          <!-- Candidate Mobile Column -->
+          <ng-container matColumnDef="phone">
             <th mat-header-cell *matHeaderCellDef>Phone No</th>
             <td mat-cell *matCellDef="let element">{{element.phone}}</td>
           </ng-container>
-          <!-- Description Column -->
-          <ng-container matColumnDef="description">
+          <!-- Candidate Email Column -->
+          <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef>Email id</th>
             <td mat-cell *matCellDef="let element">{{element.email}}</td>
+          </ng-container>
+          <!-- Candidate Resume Column -->
+          <ng-container matColumnDef="resume">
+            <th mat-header-cell *matHeaderCellDef>Resume</th>
+            <td mat-cell *matCellDef="let element">{{element.Resume}}</td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
       </mat-card-content>
-      <mat-card-footer class="text-center">
+      <mat-card-content *ngIf="dataSource.length < 1">
+        No candidate has applied for this job yet!
+      </mat-card-content>
+      <!-- <mat-card-footer class="text-center">
         2022 Copyright reserved.
-      </mat-card-footer>
+      </mat-card-footer> -->
     </mat-card>
   </div>
   
