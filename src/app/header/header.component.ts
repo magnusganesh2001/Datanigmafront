@@ -21,7 +21,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.loggedIn = authService.isAuthenticated();
     this.url = router.url;
     this.userType = '';
-
+    if (this.loggedIn){
+      this.userType = this.authService.getTokenData().type;
+      this.candidateName = this.authService.getTokenData().name;
+    }
   }
   
   ngOnInit(): void {
