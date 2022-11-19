@@ -21,6 +21,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       userName: new FormControl(""),
       userCompany: new FormControl(""),
+      companyUrl: new FormControl(""),
       userPhone: new FormControl(""),
       userEmail: new FormControl(""),
       userPassword: new FormControl("")
@@ -31,6 +32,7 @@ export class SignupComponent implements OnInit {
     const user = {
       name: this.signupForm.get('userName')?.value,
       company: this.signupForm.get('userCompany')?.value,
+      companyUrl: this.signupForm.get('companyUrl')?.value,
       phone: this.signupForm.get('userPhone')?.value,
       email: this.signupForm.get('userEmail')?.value,
       password: this.signupForm.get('userPassword')?.value,
