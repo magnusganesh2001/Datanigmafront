@@ -20,7 +20,6 @@ export class FindJobsComponent {
   userId: string;
   searchText: string = '';
   jobInDisplay: JobList | undefined;
-  companyUrl = this.authService.getTokenData().companyUrl;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -77,6 +76,7 @@ export interface JobList {
   description: string;
   salary: string;
   company: string;
+  companyUrl: string;
   location: string;
   employer: string;
   candidates: string[];

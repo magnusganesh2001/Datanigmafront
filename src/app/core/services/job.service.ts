@@ -7,7 +7,7 @@ import axios, { AxiosInstance } from 'axios';
   providedIn: 'root'
 })
 export class JobService {
-  private BASE_URL = "http://localhost:3000/api/job/"
+  private BASE_URL = "https://careerskartapiprod.azurewebsites.net/"
   private axiosClient: AxiosInstance;
 
   constructor(private authService: AuthService) {
@@ -26,7 +26,7 @@ export class JobService {
   createJob(job: any) {
     return this.axiosClient.request({
       method: 'post',
-      url: 'add',
+      url: 'api/job',
       data: job
     });
   }
@@ -34,7 +34,7 @@ export class JobService {
   getAllJobs() {
     return this.axiosClient.request({
       method: 'get',
-      url: 'all'
+      url: 'api/job/all'
     });
   }
 
@@ -42,7 +42,7 @@ export class JobService {
     const userId = this.authService.getTokenData().id;
     return this.axiosClient.request({
       method: 'post',
-      url: 'employer',
+      url: 'api/job/employer',
       data: {
         id: userId
       }
@@ -53,7 +53,7 @@ export class JobService {
     const userData = this.authService.getTokenData();
     return this.axiosClient.request({
       method: 'post',
-      url: 'apply',
+      url: 'api/job/apply',
       data: {
         candidateId: userData.id,
         jobId
@@ -64,7 +64,7 @@ export class JobService {
   getCandidates() {
     return this.axiosClient.request({
       method: 'get',
-      url: 'candidates'
+      url: 'api/job/candidates'
     });
   }
 }

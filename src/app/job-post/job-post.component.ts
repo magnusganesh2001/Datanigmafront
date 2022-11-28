@@ -43,6 +43,7 @@ export class JobPostComponent implements OnInit {
       description: this.jobPostForm.get('jobDescription')?.value,
       salary: this.jobPostForm.get('salary')?.value,
       company: userData.company,
+      companyUrl: userData.companyUrl,
       location: this.jobPostForm.get('location')?.value,
       employer: userData.id,
       jobType: this.jobPostForm.get('jobType')?.value,
@@ -52,9 +53,9 @@ export class JobPostComponent implements OnInit {
       urgent: Boolean( this.jobPostForm.get('urgent')?.value)
       
     }
-
+    console.log(job);
     this.jobService.createJob(job).then(res => {
-      console.log(job);
+      
       this.router.navigate(['employer']);
     }).catch(err => {
       console.log(err);

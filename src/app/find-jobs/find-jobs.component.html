@@ -44,7 +44,7 @@
           style="height: 100%; overflow-y: auto;">
           <div class="col">
             <div class="col p-3 pl-2" *ngIf="jobInDisplay">
-              <a href={{companyUrl}}><h1>{{ jobInDisplay.company }}</h1></a>
+              <a href={{jobInDisplay.companyUrl}}><h1>{{ jobInDisplay.company }}</h1></a>
               <h2 *ngIf="jobInDisplay.urgent">Urgent</h2>
               <h2 *ngIf="jobInDisplay.jobType">{{ jobInDisplay.jobType }}</h2>
               <h2>{{ jobInDisplay.title }}</h2>
@@ -85,6 +85,6 @@
     </mat-card-content>
   </mat-card>
   <footer class="text-center">
-    2022 Copyright reserved.
+    © 2022 Copyright reserved.
   </footer>
 </div>

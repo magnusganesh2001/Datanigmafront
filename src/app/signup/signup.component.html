@@ -3,8 +3,7 @@
         <div class="col-md-6" style="width: 100%; padding: 15px;">
             <div class="card">
                 <div class="text-center">
-                    <h1>Sign Up</h1>
-                    <h4>Register Yourself</h4>
+                    <h1>Register</h1>
                 </div>
                 <button mat-raised-button (click)="setSignup('Employer')" [color]="userType ==='Employer' ? 'primary' : ''">Employer</button><br>
                 <button mat-raised-button (click)="setSignup('Seeker')" [color]="userType ==='Seeker' ? 'primary' : ''">Seeker</button><br>
@@ -26,6 +25,10 @@
                             <label for="userPhone" class="form-label">Phone Number</label>
                             <input formControlName="userPhone" type="number" class="form-control" id="userPhone">
                         </div>
+                        <div class="mb-3" *ngIf="userType === 'Seeker'">
+                            <label for="userPhone" class="form-label">Location</label>
+                            <input formControlName="location" type="text" class="form-control" id="userLocation">
+                        </div>
                         <div class="mb-3">
                           <label for="userEmail" class="form-label">Email address</label>
                           <input formControlName="userEmail" type="email" class="form-control" id="userEmail" aria-describedby="emailHelp">
@@ -35,7 +38,7 @@
                           <label for="userPassword" class="form-label">Password</label>
                           <input formControlName="userPassword" type="password" class="form-control" id="userPassword">
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <button type="submit" class="btn btn-primary">Register Now</button>
                     </form>
                     <a style="color: black; margin-top: 10px;" routerLink="/login"> Already Registered? Click to Login</a>
                 </form>

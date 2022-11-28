@@ -2,17 +2,20 @@
   <span [routerLink]="''" style="cursor: pointer;">
     <img src="./.././../assets/logo1.png" width="130" alt="" class="d-inline-block align-middle mr-2">
   </span>
-    <div class="spacer"></div>
-    <button  class="NavButton" *ngIf="loggedIn" mat-raised-button routerLink="/candidate-profile/{{candidateId}}">Hi, {{candidateName}}!</button>
-    <button  mat-flat-button *ngIf="userType == 'Seeker' && loggedIn" routerLink="/applied-jobs" routerLinkActive="router-link-active" class="headerbutton NavButton">
-      <span>Applied Jobs</span>
-    </button>
-    <button mat-flat-button *ngIf="userType == 'Employer' && loggedIn" routerLink="/applied-candidates" routerLinkActive="router-link-active" class="headerbutton NavButton">
-      <span>Applied Candidates</span>
-    </button>
-    <div class="example-label example-button-row">
-    <button *ngIf="loggedIn" mat-raised-button color="danger" (click)="logout()" mat-button >Logout</button>
-    </div>
-      <button class="NavButton" *ngIf="!loggedIn" mat-raised-button color="danger" routerLink="/login" mat-button >Login</button>
-      <button class="NavButton" *ngIf="!loggedIn" mat-raised-button color="danger" routerLink="/signup" mat-button >Sign Up</button>
+  <span routerLink="/AboutCompany" class="about">
+    About
+  </span>
+  <div class="spacer"></div>
+  <button  class="NavButton" *ngIf="loggedIn" mat-raised-button routerLink="/candidate-profile/{{candidateId}}">Hi, {{candidateName}}!</button>
+  <button  mat-flat-button *ngIf="userType == 'Seeker' && loggedIn" routerLink="/applied-jobs" routerLinkActive="router-link-active" class="headerbutton NavButton">
+    <span>Applied Jobs</span>
+  </button>
+  <button mat-flat-button *ngIf="userType == 'Employer' && loggedIn" routerLink="/applied-candidates" routerLinkActive="router-link-active" class="headerbutton NavButton">
+    <span>Applied Candidates</span>
+  </button>
+  <div class="example-label example-button-row">
+  <button *ngIf="loggedIn" mat-raised-button color="danger" (click)="logout()" mat-button >Logout</button>
+  </div>
+    <button class="NavButton" *ngIf="!loggedIn" mat-raised-button color="danger" routerLink="/login" mat-button >Login</button>
+    <button class="NavButton" *ngIf="!loggedIn" mat-raised-button color="danger" routerLink="/signup" mat-button >Sign Up</button>
 </div>

@@ -22,6 +22,7 @@ export class SignupComponent implements OnInit {
       userName: new FormControl(""),
       userCompany: new FormControl(""),
       companyUrl: new FormControl(""),
+      location: new FormControl(""),
       userPhone: new FormControl(""),
       userEmail: new FormControl(""),
       userPassword: new FormControl("")
@@ -33,6 +34,7 @@ export class SignupComponent implements OnInit {
       name: this.signupForm.get('userName')?.value,
       company: this.signupForm.get('userCompany')?.value,
       companyUrl: this.signupForm.get('companyUrl')?.value,
+      location: this.signupForm.get('Location')?.value,
       phone: this.signupForm.get('userPhone')?.value,
       email: this.signupForm.get('userEmail')?.value,
       password: this.signupForm.get('userPassword')?.value,

@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-  private BASE_URL = "http://localhost:3000/api/user/"
+  private BASE_URL = "https://careerskartapiprod.azurewebsites.net/"
   private authenticated = false;
 
   authorised: Subject<boolean> = new Subject<boolean>();
@@ -66,7 +66,7 @@ export class AuthService {
   public signup(user: any) {
     return this.axiosClient.request({
       method: "post",
-      url: 'signup',
+      url: 'api/user/signup',
       data: user
     });
   }
@@ -74,7 +74,7 @@ export class AuthService {
   public login(email: string, password: string) {
     return this.axiosClient.request({
       method: "post",
-      url: 'login',
+      url: 'api/user/login',
       data: {
         email, password
       }
@@ -84,7 +84,7 @@ export class AuthService {
   getCandidateProfile(userid: string) {
     return this.axiosClient.request({
       method: 'get',
-      url: 'candidate/'+userid
+      url: 'api/user/candidate/'+userid
     });
   }
 }

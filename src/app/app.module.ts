@@ -31,6 +31,7 @@ import { CandidateProfileComponent } from './candidate-profile/candidate-profile
 import { ModalResumeComponent } from './modal-resume/modal-resume.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FooterComponent } from './footer/footer.component';
     CandidateProfileComponent,
     ModalResumeComponent,
     FooterComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
