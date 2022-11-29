@@ -17,11 +17,12 @@ export class AppliedJobsComponent implements OnInit {
   constructor(private authService: AuthService, private jobService: JobService, private router: Router, private toastService: ToastrService) {
     this.jobService.getAllJobs().then(res => {
       this.jobs = res.data.jobs;
+      console.log(this.jobs)
     });
     this.jobService.getCandidates().then(res => {
       console.log(res);
     });
-    this.userId = this.authService.getTokenData().id;
+    this.userId = this.authService.getUserData().id;
   }
 
   ngOnInit(): void {

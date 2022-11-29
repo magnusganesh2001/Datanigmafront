@@ -23,9 +23,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.url = router.url;
     this.userType = '';
     if (this.loggedIn){
-      this.userType = this.authService.getTokenData().type;
-      this.candidateName = this.authService.getTokenData().name;
-      this.candidateId = this.authService.getTokenData().id;
+      this.userType = this.authService.getUserData().type;
+      this.candidateName = this.authService.getUserData().name;
+      this.candidateId = this.authService.getUserData().id
     }
   }
   
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.loggedIn = res;
       if (this.loggedIn){
         this.userType = this.authService.getTokenData().type;
-        this.candidateName = this.authService.getTokenData().name;
+        this.candidateName = this.authService.getTokenData().User.name;
         this.candidateId = this.authService.getTokenData().id;
       }
       else

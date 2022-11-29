@@ -27,14 +27,12 @@ export class CandidateProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userid = this.router.url.split('/')[this.router.url.split('/').length-1];
     console.log(this.userid);
-    this.authService.getCandidateProfile(this.userid).then(res => {
-      console.log(res);
-      this.candidateName = res.data.user.name;
-      this.candidateMail = res.data.user.email;
-      this.candidateNo = res.data.user.phone;
-      this.candidateLocation = res.data.user.location ? res.data.user.location : "Not provided";
-      this.candidateResume = res.data.user.resume ? res.data.user.resume : "Not uploaded";
-    });
+    this.candidateName = this.authService.getUserData().name
+    this.candidateMail = this.authService.getUserData().email
+    this.candidateNo = this.authService.getUserData().phone
+    this.candidateLocation = this.authService.getUserData().location ? this.authService.getUserData().location : "Not provided";
+    this.candidateResume = this.authService.getUserData().resume ? this.authService.getUserData().resume : "Not uploaded";
+
   }
   openDialog() {
     const dialogRef = this.dialog.open(ModalResumeComponent);

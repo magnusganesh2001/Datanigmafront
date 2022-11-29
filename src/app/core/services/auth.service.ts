@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import axios, { AxiosInstance } from 'axios';
 import { Subject } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { JsonpInterceptor } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   private authenticated = false;
 
   authorised: Subject<boolean> = new Subject<boolean>();
-
+  
   private axiosClient: AxiosInstance;
   constructor(private router: Router) {
     this.axiosClient = axios.create({
@@ -34,20 +35,21 @@ export class AuthService {
     return this.authenticated;
   }
 
-  public setAuthenticated(token: string): void {
-    localStorage.setItem('token', JSON.stringify(token));
+  public setAuthenticated(data : any): void {
+    localStorage.setItem('token', JSON.stringify(data.token));
+    localStorage.setItem('userData', JSON.stringify(data.userData));
+
     this.authenticated = true;
     this.authorised.next(this.authenticated);
   }
 
-  public logout(): void {
-    this.authenticated = false;
-    this.authorised.next(this.authenticated);
-    localStorage.removeItem('token');
-    this.router.navigate(['login']);
+  public getUserData(){
+    let userData : any
+    userData =  JSON.parse(localStorage.getItem('userData')!)
+    return userData
   }
 
-  public getDecodedAccessToken(token: string): any {
+  public decoded(token: string): any {
     try {
       return jwt_decode(token);
     } catch(Error) {
@@ -55,8 +57,16 @@ export class AuthService {
     }
   }
 
+  public logout(): void {
+    this.authenticated = false;
+    this.authorised.next(this.authenticated);
+    localStorage.removeItem('userData');
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
+  }
+
   public getTokenData() {
-    return this.getDecodedAccessToken(localStorage.getItem('token')!);
+    return JSON.parse(localStorage.getItem('userData')!);
   }
 
   public getToken() {

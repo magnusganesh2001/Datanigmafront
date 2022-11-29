@@ -20,6 +20,9 @@ export class FindJobsComponent {
   userId: string;
   searchText: string = '';
   jobInDisplay: JobList | undefined;
+  finalSkill = [];
+  finalBenefit = [];
+  finalLang = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -30,15 +33,31 @@ export class FindJobsComponent {
     private toastService: ToastrService
   ) {
     this.jobInDisplay = undefined;
-    this.userId = this.authService.getTokenData().id;
+    this.userId = this.authService.getUserData().id;
     this.jobService.getAllJobs().then((res) => {
-      let jobList: any[] = res.data.jobs;
-      jobList.forEach(job =>{
-        if (job.candidates.includes(this.userId)) 
-          job['applied'] = true;
-        else
-          job['applied'] = false;
+      let jobList = res.data.jobs;
+      this.finalSkill = jobList.job_skills.map(function (obj: any) {
+        return obj.skill;
       });
+      this.finalBenefit = jobList.job_benefits.map(function (obj: any) {
+        return obj.benefit;
+      });
+      this.finalLang = jobList.job_languages.map(function (obj: any) {
+        return obj.language;
+      });
+      jobList.job_benefits = this.finalBenefit.toString()
+      jobList.job_languages = this.finalLang.toString()
+      jobList.job_skills = this.finalSkill.toString()
+      console.log(jobList)
+      let jobListpure = Object.entries(jobList)
+      console.log(jobList.title)
+      jobListpure.forEach(job =>{
+        // if (job.candidates.includes(this.userId))
+        //   job['applied'] = true;
+        // else
+        //   job['applied'] = false;
+      });
+      
       this.dataSource = new MatTableDataSource<JobList>(jobList);
       this.dataSource.paginator = this.paginator;
     });

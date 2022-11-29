@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   candidateResume: any
 
   constructor(private router:Router, private authService: AuthService){
-    this.userType = authService.getTokenData().type;
+    this.userType = authService.getUserData().type;
   }
 
   ngOnInit(): void {

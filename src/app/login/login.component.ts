@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.get('password')?.value;
     this.authService.login(email,password).then(res => {
       console.log(res);
-      this.authService.setAuthenticated(res.data.token);
+      this.authService.setAuthenticated(res.data);
       this.router.navigate(['']);
     }).catch(err => {
       alert(err);
